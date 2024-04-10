@@ -20,7 +20,8 @@
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.5",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.1.0"
+    "swiper": "^11.1.0",
+    "vercel": "^33.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
