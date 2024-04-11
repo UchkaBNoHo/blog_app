@@ -27,6 +27,7 @@ export const POST = async (request) => {
     const newPost = new PostModel({
       title: body.title,
       desc: body.desc,
+      img: body.img,
       userId: user._id,
       slug: body.slug,
     });

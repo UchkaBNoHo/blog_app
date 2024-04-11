@@ -5,6 +5,7 @@ import { FaHeart } from "react-icons/fa";
 import Link from "next/link";
 const OneBlog = (props) => {
   const words = props.desc.split(" ");
+  // console.log(props.post.img);
 
   // Get the first 25 words
   const first25Words = words.slice(0, 25).join(" ");
@@ -13,7 +14,7 @@ const OneBlog = (props) => {
       <div className="w-[35%] h-[100%] rounded-[8px] relative overflow-hidden max-lg:w-full max-lg:h-[280px] max-md:h-[300px]">
         <Image
           src={props.image}
-          alt="image"
+          alt={props.post.slug}
           fill
           objectFit="cover"
           className="cursor-pointer hover:scale-105 duration-300"

@@ -23,7 +23,7 @@ const Blogs = async () => {
           posts.map((d) => (
             <OneBlog
               key={d._id}
-              image="/carImage.jpg"
+              image={d.img}
               date="2 FEBRUARY"
               title={d.title}
               desc={d.desc}
