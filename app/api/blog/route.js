@@ -22,7 +22,7 @@ export const POST = async (request) => {
     // console.log(body.session.user.email);
 
     const user = await UserModel.findOne({ email: body.session.user.email });
-    // console.log(user);
+    console.log(user);
 
     const newPost = new PostModel({
       title: body.title,
@@ -30,7 +30,10 @@ export const POST = async (request) => {
       img: body.img,
       userId: user._id,
       slug: body.slug,
+      readDuration: body.readDuration,
+      category: body.category,
     });
+    console.log(newPost);
     await newPost.save();
     console.log(newPost);
     return NextResponse.json("success", { status: 200 });

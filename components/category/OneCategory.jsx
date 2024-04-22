@@ -1,12 +1,11 @@
-import Image from "next/image";
 import React from "react";
+import Views from "../Logic/Views";
+import Image from "next/image";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import { format } from "date-fns";
-import { useAuthContext } from "@/context/AuthContext";
-import Views from "../Logic/Views";
 
-const OneBlog = (props) => {
+const OneCategory = (props) => {
   const words = props.desc.split(" ");
   // console.log(props.post.img);
 
@@ -20,7 +19,6 @@ const OneBlog = (props) => {
 
   // Get the first 25 words
   const first25Words = words.slice(0, 16).join(" ");
-
   return (
     <div className="flex h-[280px] py-4 gap-9 border-b-[1px] max-lg:flex-col max-lg:h-fit max-lg:gap-4 max-lg:py-6">
       <div className="w-[35%] h-[100%] rounded-[8px] relative overflow-hidden max-lg:w-full max-lg:h-[280px] max-md:h-[300px]">
@@ -56,4 +54,4 @@ const OneBlog = (props) => {
   );
 };
 
-export default OneBlog;
+export default OneCategory;

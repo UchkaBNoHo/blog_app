@@ -1,6 +1,7 @@
-"use client"
+"use client";
+import BiggerSideBlog from "./BiggerSideBlog";
 import SideBlog from "./SideBlog";
-import { useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const SideBlogs = () => {
   const { data: session } = useSession();

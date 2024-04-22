@@ -7,8 +7,10 @@ export async function POST(request) {
   await connectDB();
 
   try {
-    const { userName, email, password, confirmPassword } = await request.json();
-    console.log(password, confirmPassword);
+    const { userName, email, password, confirmPassword, img } =
+      await request.json();
+    // console.log(password, confirmPassword);
+    console.log(img);
 
     if (!userName || !email || !password || !confirmPassword) {
       return NextResponse.json(
@@ -54,9 +56,10 @@ export async function POST(request) {
       email,
       password: hashedPassword,
       confirmPassword: hashedPassword,
+      img,
     });
-    return NextResponse.json({ message: "success" });
+    return NextResponse.json({ message: "success" }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: error.message });
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }

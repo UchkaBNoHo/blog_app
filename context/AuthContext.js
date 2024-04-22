@@ -1,6 +1,6 @@
 "use client";
+
 import { useSession } from "next-auth/react";
-import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
@@ -8,13 +8,20 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const { data: session } = useSession();
   const [user, setUser] = useState();
+  const [userPosts, setUserPosts] = useState([]);
+  const [pageLoading, setPageLoading] = useState(false);
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
+    setPageLoading(true);
     const getUser = async () => {
       if (!session?.user?.email) {
         return null;
       }
-      const response = await fetch(`api/user/${session?.user?.email}`);
+      const response = await fetch(
+        `http://localhost:3000/api/user/${session?.user?.email}`
+      );
       const data = await response.json();
       // console.log(data);
 
@@ -24,6 +31,7 @@ export const AuthContextProvider = ({ children }) => {
 
       // console.log(response);
       setUser(data);
+      setPageLoading(false);
     };
     getUser();
   }, [session]);
@@ -32,6 +40,12 @@ export const AuthContextProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         user,
+        userPosts,
+        setUserPosts,
+        pageLoading,
+        setPageLoading,
+        selectedCategory,
+        setSelectedCategory,
       }}
     >
       {children}

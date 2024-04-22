@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const SideBlog = (props) => {
+  console.log(props);
   return (
     <div className="flex gap-4 items-center py-3 border-b sm:max-md:w-[48%]">
       <div className="relative h-[70px] min-w-[70px] rounded-[8px] overflow-hidden">

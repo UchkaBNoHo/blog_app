@@ -14,7 +14,7 @@ const Navbar = () => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const { user } = useAuthContext();
-  console.log(user);
+  // console.log(user);
 
   const isAdmin = true;
 
@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className="max-w-[1160px] mx-auto h-full flex justify-between items-center cursor-pointer">
         <form
           action=""
-          className="flex gap-2 bg-[#F8F8F8] w-fit px-3 py-2 rounded-[24px] "
+          className="flex gap-2 bg-[#F8F8F8] w-fit px-3 py-2 rounded-[24px] hover:bg-gray-200 duration-200"
         >
           <label htmlFor="my_modal_7" className="">
             <CiSearch className="text-2xl cursor-pointer " />
@@ -53,7 +53,9 @@ const Navbar = () => {
           <div className="flex gap-6 items-center">
             {isAdmin === true && (
               <Link href="/pages/createBlog">
-                <TfiWrite className="text-xl cursor-pointer text-gray-600 hover:text-black" />
+                <div className="p-4 hover:bg-slate-200 rounded-full duration-200">
+                  <TfiWrite className="text-xl cursor-pointer text-gray-600 hover:text-black" />
+                </div>
               </Link>
             )}
             <button
@@ -66,15 +68,29 @@ const Navbar = () => {
                 <span>Logout</span>
               )}
             </button>
-            <div className="w-10 h-10 rounded-full relative overflow-hidden">
-              <Link href={`/pages/userProfile/${user._id}`}>
-                <Image
-                  src="/profilePic.jpg"
-                  alt="image"
-                  fill
-                  className="cursor-pointer"
-                />
-              </Link>
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button">
+                <div className="p-[6px] hover:bg-slate-200 rounded-full duration-200">
+                  <div className="w-10 h-10 rounded-full relative overflow-hidden">
+                    <div className="avatar">
+                      <div className="w-12 relative">
+                        <Image src={user.img} alt="" fill objectFit="cover" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link href={`/pages/userProfile/${user.email}`}>Profile</Link>
+                </li>
+                <li>
+                  <a>Item 2</a>
+                </li>
+              </ul>
             </div>
           </div>
         ) : (

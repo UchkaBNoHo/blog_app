@@ -24,6 +24,22 @@ const Post = new Schema(
       required: true,
       unique: true,
     },
+    loved: {
+      type: Array,
+      default: [],
+    },
+    views: {
+      type: Number,
+      default: 0,
+    },
+    readDuration: {
+      type: Number,
+      default: 0,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -32,7 +48,7 @@ const Post = new Schema(
 
 let PostModel;
 
-if (mongoose.models.post) {
+if (mongoose.models?.post) {
   PostModel = mongoose.models.post;
 } else {
   PostModel = mongoose.model("post", Post);

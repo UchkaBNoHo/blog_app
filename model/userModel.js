@@ -28,6 +28,7 @@ const User = new Schema(
     },
     img: {
       type: String,
+      required: true,
     },
   },
   {
@@ -37,7 +38,7 @@ const User = new Schema(
 
 let UserModel;
 
-if (mongoose.models.user) {
+if (mongoose.models?.user) {
   UserModel = mongoose.models.user;
 } else {
   UserModel = mongoose.model("user", User);

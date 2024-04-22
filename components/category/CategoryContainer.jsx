@@ -9,6 +9,8 @@ const CategoryContainer = () => {
       <Category category="Technology" />
       <Category category="Health" />
       <Category category="Humanity" />
+      <Category category="Coding" />
+      <Category category="Fashion" />
     </div>
   );
 };

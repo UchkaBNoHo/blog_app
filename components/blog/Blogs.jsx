@@ -1,12 +1,16 @@
 import React from "react";
 import OneBlog from "./OneBlog";
-import { getPosts } from "@/app/api/blog/route";
 import axios from "axios";
 
 const getData = async () => {
-  const res = await axios.get("http://localhost:3000/api/blog");
-
-  return res.data;
+  try {
+    const res = await axios.get("http://localhost:3000/api/blog");
+    console.log(res);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
 };
 
 const Blogs = async () => {
