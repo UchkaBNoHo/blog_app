@@ -11,6 +11,9 @@ export const AuthContextProvider = ({ children }) => {
   const [userPosts, setUserPosts] = useState([]);
   const [pageLoading, setPageLoading] = useState(false);
 
+  // searchValue
+  const [searchValue, setSearchValue] = useState("");
+
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
@@ -46,6 +49,8 @@ export const AuthContextProvider = ({ children }) => {
         setPageLoading,
         selectedCategory,
         setSelectedCategory,
+        searchValue,
+        setSearchValue,
       }}
     >
       {children}

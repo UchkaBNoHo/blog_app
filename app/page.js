@@ -1,9 +1,6 @@
-import Blogs from "@/components/blog/Blogs";
 import BlogsContainer from "@/components/blog/blogsContainer";
 import CategoryContainer from "@/components/category/CategoryContainer";
 import Navbar from "@/components/navbar/Navbar";
-import SideBlogs from "@/components/sideBlogs/SideBlogs";
-import { useAuthContext } from "@/context/AuthContext";
 import { Suspense } from "react";
 
 export const metadata = {

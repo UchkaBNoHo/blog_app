@@ -13,7 +13,8 @@ const Navbar = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
-  const { user } = useAuthContext();
+  const [search, setSearch] = useState(false);
+  const { user, setSearchValue } = useAuthContext();
   // console.log(user);
 
   const isAdmin = true;
@@ -23,6 +24,11 @@ const Navbar = () => {
     await signOut({ redirect: false });
     setLoading(false);
     router.push("/pages/login");
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(search);
+    // setSearchValue(search);
   };
   return (
     <section className="w-full py-3 max-xl:px-9 max-w-[500px]:bg-sky-300 max-sm:px-4">
@@ -42,7 +48,11 @@ const Navbar = () => {
                 type="text"
                 className="bg-transparent border-none outline-none placeholder:text-[14px] w-[10rem] placeholder:text-[#646464]"
                 placeholder="Search"
+                onChange={(e) => setSearch(e.target.value)}
               />
+              <button type="submit" onClick={() => handleSearch()}>
+                Search
+              </button>
             </div>
             <label className="modal-backdrop" htmlFor="my_modal_7">
               Close
